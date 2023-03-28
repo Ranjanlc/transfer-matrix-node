@@ -27,5 +27,9 @@ const courseSchema = new Schema({
     type: Array,
     required: true,
   },
+  creditHours: {
+    type: Array,
+    required: true,
+  },
 });
 module.exports = mongoose.model('Course', courseSchema);

@@ -12,16 +12,6 @@ app.use((req, res, next) => {
   next();
 });
 app.get('/get-course', getCourseHandler);
-// app.get('/test', (req, res) => {
-//   fs.readFile('names.unl', 'utf-8', (error, data) => {
-//     const transformed = data.split('\r\n').map((container) => {
-//       const [id, name, state] = container.split(';');
-//       return { id, nameContainer: `${name} - (${state})` };
-//     });
-//     // console.log(transformed);
-//     return res.status(200).json({ transformed });
-//   });
-// });
 
 mongoose
   .connect(
@@ -82,6 +72,8 @@ mongoose
           collegeCourseName = `${course1}-${course2.trim()}-${course3.trim()}`;
         }
         const collegeCourse = `${collegeCourseCode}-${collegeCourseName}`;
+        const creditHour =
+          eqvtCourse === 'NODEPT0000' ? 0 : Math.floor(Math.random() * 4) + 1;
         return {
           _id,
           collegeType,
@@ -90,6 +82,7 @@ mongoose
           startDate,
           endDate,
           level,
+          creditHour,
         };
       });
       //   console.log(fileContent[244]);
@@ -102,6 +95,7 @@ mongoose
           startDate,
           endDate,
           level,
+          creditHour,
         } = curData;
         const startDateRefined =
           startDate !== '' ? new Date(startDate).toISOString() : '';
@@ -114,6 +108,7 @@ mongoose
           acc[_id].startDateContainer.push(startDateRefined);
           acc[_id].endDateContainer.push(endDateRefined);
           acc[_id].levels.push(level);
+          acc[_id].creditHours.push(creditHour);
           return acc;
         }
         if (!acc[_id]) {
@@ -125,10 +120,12 @@ mongoose
             startDateContainer: [startDateRefined],
             endDateContainer: [endDateRefined],
             levels: [level],
+            creditHours: [creditHour],
           };
           return acc;
         }
       }, {});
+      // console.log(Object.values(refinedData));
       Course.insertMany(Object.values(refinedData))
         .then((res) => {
           console.log(res);
