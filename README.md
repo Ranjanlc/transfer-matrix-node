@@ -23,4 +23,4 @@
 <h2>Published Domain</h2>
 
 <p>The frontend portion is published on <a href="https://render.com/">Render</a> at <a href="https://transfer-matrix.onrender.com">Transfer Matrix Backend </a>.e</p>
-**Note:** _You  would be greeted with "Cannot GET /" error.We get the data actually from /get-course?collegeId=SAMPLE_ID route_
+<em><strong>Note:</strong>You  would be greeted with "Cannot GET /" error.We get the data actually from /get-course?collegeId=SAMPLE_ID route</em></p>
