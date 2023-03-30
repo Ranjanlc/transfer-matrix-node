@@ -12,6 +12,9 @@ app.use((req, res, next) => {
 app.get('/get-course', getCourseHandler);
 
 // 'mongodb+srv://ranjan:ecutransfermatrix@transfermatrix.vzy0erd.mongodb.net/college?retryWrites=true&w=majority'
+app.use('/', (req, res) => {
+  res.json({ message: 'hello from node' });
+});
 mongoose
   .connect(
     'mongodb+srv://ranjan:ecutransfermatrix@transfermatrix.vzy0erd.mongodb.net/college?retryWrites=true&w=majority'
@@ -138,4 +141,5 @@ mongoose
     app.listen(8080, () => {
       console.log('Server Startedd');
     });
-  });
+  })
+  .catch((err) => {});
