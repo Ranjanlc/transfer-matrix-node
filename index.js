@@ -10,6 +10,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/', (req, res, next) => {
+  console.log('AAyo haii');
   res.json({ message: 'hello from node' });
   next();
 });
