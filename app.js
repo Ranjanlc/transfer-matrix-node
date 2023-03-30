@@ -3,18 +3,19 @@ const express = require('express');
 const { getCourseHandler } = require('./controller/getCourse');
 const app = express();
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-  next();
-});
-app.get('/get-course', getCourseHandler);
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+//   next();
+// });
+// app.get('/get-course', getCourseHandler);
 
 // 'mongodb+srv://ranjan:ecutransfermatrix@transfermatrix.vzy0erd.mongodb.net/college?retryWrites=true&w=majority'
 app.use('/', (req, res) => {
   res.json({ message: 'hello from node' });
 });
+/*
 mongoose
   .connect(
     'mongodb+srv://ranjan:ecutransfermatrix@transfermatrix.vzy0erd.mongodb.net/college?retryWrites=true&w=majority'
@@ -137,9 +138,9 @@ mongoose
         });
       // handle error and do something with docs
     });
-*/
     app.listen(8080, () => {
       console.log('Server Startedd');
     });
   })
   .catch((err) => {});
+*/
