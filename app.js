@@ -13,12 +13,9 @@ app.use((req, res, next) => {
 });
 app.get('/get-course', getCourseHandler);
 
-mongoose
-  .connect(
-    'mongodb+srv://ranjan:ecutransfermatrix@transfermatrix.vzy0erd.mongodb.net/college?retryWrites=true&w=majority'
-  )
-  .then((res) => {
-    /*
+// 'mongodb+srv://ranjan:ecutransfermatrix@transfermatrix.vzy0erd.mongodb.net/college?retryWrites=true&w=majority'
+mongoose.connect(process.env.MONGO_URL).then((res) => {
+  /*
     fs.readFile('courses.txt', 'utf8', function (err, data) {
       if (err) throw err;
       const fileContent = data.split('\r\n').map((container) => {
@@ -136,5 +133,7 @@ mongoose
       // handle error and do something with docs
     });
 */
-    app.listen(8080);
+  app.listen(8080, () => {
+    console.log('Server Startedd');
   });
+});
